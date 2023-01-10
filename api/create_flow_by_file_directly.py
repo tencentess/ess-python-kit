@@ -1,6 +1,6 @@
-from api.create_flow_by_files import create_flow_by_file_id
-from api.create_schema_url import create_schema_url
-from api.upload_files import upload_files
+from api.flow_management.create_flow_by_files import create_flow_by_files
+from api.flow_management.create_schema_url import create_schema_url
+from api.file_upload_download.upload_files import upload_files
 
 
 def create_flow_by_file_directly(operator_user_id, file_base64, flow_name, approvers):
@@ -13,7 +13,7 @@ def create_flow_by_file_directly(operator_user_id, file_base64, flow_name, appro
     file_id = upload_resp.FileIds[0]
 
     # 创建签署流程
-    create_flow_resp = create_flow_by_file_id(operator_user_id, flow_name, approvers, file_id)
+    create_flow_resp = create_flow_by_files(operator_user_id, flow_name, approvers, file_id)
     flow_id = create_flow_resp.FlowId
 
     # 获取签署链接

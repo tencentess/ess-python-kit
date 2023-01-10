@@ -6,6 +6,10 @@ from config import Config
 
 def create_convert_task_api(operator_user_id, resource_id, resource_type, resource_name):
     """
+    CreateConvertTaskApi 创建文件转换任务
+
+    官网文档：https://cloud.tencent.com/document/product/1323/78149
+
     此接口用于创建文件转换任务
     适用场景：将doc/docx文件转化为pdf文件
     """

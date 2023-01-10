@@ -1,21 +1,24 @@
-from tencentcloud.ess.v20201111.models import CreateFlowRequest, UserInfo, FlowCreateApprover
+from tencentcloud.ess.v20201111.models import CreatePrepareFlowRequest, UserInfo, FlowCreateApprover
 
 from api.common import get_client_instance
 from config import Config
 
 
-def create_flow(operator_user_id, flow_name, approvers):
+def create_prepare_flow(operator_user_id, flow_name, resource_id, approvers):
     """
-    创建签署流程
-    适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
-    注：该接口是通过模板生成合同流程的前置接口，先创建一个不包含签署文件的流程。配合“创建电子文档”接口和“发起流程”接口使用。
+    CreatePrepareFlow 创建快速发起流程
+
+    官网文档：https://cloud.tencent.com/document/product/1323/83412
+
+    适用场景：用户通过API 合同文件及签署信息，并可通过我们返回的URL在页面完成签署控件等信息的编辑与确认，快速发起合同.
+    注：该接口文件的resourceId 是通过上传文件之后获取的。
     """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)
 
     # 构造请求体
-    req = CreateFlowRequest()
+    req = CreatePrepareFlowRequest()
 
     # 调用方用户信息，参考通用结构
     user_info = UserInfo()
@@ -28,17 +31,21 @@ def create_flow(operator_user_id, flow_name, approvers):
     # 签署流程名称,最大长度200个字符
     req.FlowName = flow_name
 
-    response = client.CreateFlow(req)
+    # 资源Id,通过上传UploadFiles接口获得
+    req.ResourceId = resource_id
+
+    response = client.CreatePrepareFlow(req)
     return response
 
 
 if __name__ == '__main__':
     """
-    创建签署流程调用样例
+    创建快速发起流程调用样例
     """
 
     try:
-        _flow_name = '我的第一份模版合同'
+        _flow_name = '快速发起流程'
+        _resource_id = '******************'
 
         # 签署流程参与者信息
         _approvers = []
@@ -58,7 +65,7 @@ if __name__ == '__main__':
 
         _approvers.append(approver)
 
-        resp = create_flow(Config.operator_user_id, _flow_name, _approvers)
+        resp = create_prepare_flow(Config.operator_user_id, _flow_name, _resource_id, _approvers)
         print(resp)
     except Exception as e:
         print(e)

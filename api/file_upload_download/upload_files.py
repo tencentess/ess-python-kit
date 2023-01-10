@@ -8,7 +8,12 @@ from config import Config
 
 def upload_files(operator_user_id, file_base64, filename):
     """
+    UploadFiles 此接口（UploadFiles）用于文件上传。
+
+    官网文档：https://cloud.tencent.com/document/api/1323/73066
+
     适用场景：用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。
+    调用是请注意此处的 Endpoint 和其他接口不同
     """
 
     # 构造客户端调用实例

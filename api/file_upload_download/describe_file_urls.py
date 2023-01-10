@@ -6,7 +6,10 @@ from config import Config
 
 def describe_file_urls(operator_user_id, business_ids, business_type):
     """
-    查询文件下载URL
+    DescribeFileUrls 查询文件下载URL
+
+    官网文档：https://cloud.tencent.com/document/product/1323/70366
+
     适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
     """
 

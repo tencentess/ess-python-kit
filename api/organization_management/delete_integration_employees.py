@@ -6,6 +6,10 @@ from config import Config
 
 def delete_integration_employees(operator_user_id, employees):
     """
+    DeleteIntegrationEmployees 移除员工
+
+    官网文档：https://cloud.tencent.com/document/product/1323/81116
+
     移除员工
     """
 

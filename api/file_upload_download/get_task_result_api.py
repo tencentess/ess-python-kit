@@ -6,6 +6,10 @@ from config import Config
 
 def get_task_result_api(operator_user_id, task_id):
     """
+    GetTaskResultApi 查询转换任务状态
+
+    官网文档：https://cloud.tencent.com/document/product/1323/78148
+
     此接口用于查询转换任务状态
     适用场景：将doc/docx文件转化为pdf文件
     注：该接口是“创建文件转换任务”接口的后置接口，用于查询转换任务的执行结果

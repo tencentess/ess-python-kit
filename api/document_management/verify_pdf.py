@@ -6,7 +6,11 @@ from config import Config
 
 def verify_pdf(operator_user_id, flow_id):
     """
-    合同文件验签
+    VerifyPdf 合同文件验签
+
+    官网文档：https://cloud.tencent.com/document/product/1323/80797
+
+    验证合同文件
     """
 
     # 构造客户端调用实例

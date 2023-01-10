@@ -6,6 +6,10 @@ from config import Config
 
 def create_integration_employees(operator_user_id, employees):
     """
+    CreateIntegrationEmployees 创建员工
+
+    官网文档：https://cloud.tencent.com/document/product/1323/81117
+
     创建员工
     """
 

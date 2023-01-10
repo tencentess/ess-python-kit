@@ -1,9 +1,9 @@
 import time
 
-from api.create_document import create_document
-from api.create_flow import create_flow
-from api.create_schema_url import create_schema_url
-from api.start_flow import start_flow
+from api.flow_management.create_document import create_document
+from api.flow_management.create_flow import create_flow
+from api.flow_management.create_schema_url import create_schema_url
+from api.flow_management.start_flow import start_flow
 from config import Config
 
 

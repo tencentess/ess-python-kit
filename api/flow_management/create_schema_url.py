@@ -6,7 +6,10 @@ from config import Config
 
 def create_schema_url(operator_user_id, flow_id, path_type):
     """
-    获取小程序跳转链接
+    CreateSchemeUrl 获取小程序跳转链接
+
+    官网文档： https://cloud.tencent.com/document/product/1323/70359
+
     适用场景：如果需要签署人在自己的APP、小程序、H5应用中签署，可以通过此接口获取跳转腾讯电子签小程序的签署跳转链接。
     注：如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署。
     跳转到小程序的实现，参考官方文档（分为全屏、半屏两种方式）

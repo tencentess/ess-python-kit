@@ -5,8 +5,8 @@ if __name__ == '__main__':
     sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
     from api.create_flow_by_file_directly import create_flow_by_file_directly
-    from api.describe_file_urls import describe_file_urls
-    from api.upload_files import to_base64
+    from api.file_upload_download.describe_file_urls import describe_file_urls
+    from api.file_upload_download.upload_files import to_base64
     from config import Config
     from byfile import build_person_approver
 

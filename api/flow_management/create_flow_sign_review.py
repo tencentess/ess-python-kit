@@ -6,7 +6,10 @@ from config import Config
 
 def create_flow_sign_review(operator_user_id, flow_id, review_type, review_message):
     """
-    提交企业签署流程审批结果
+    CreateFlowSignReview 提交企业签署流程审批结果
+
+    官网地址：https://cloud.tencent.com/document/product/1323/78980
+
     适用场景:
     在通过接口(CreateFlow 或者CreateFlowByFiles)创建签署流程时，若指定了参数 NeedSignReview 为true,则可以调用此接口提交企业内部签署审批结果。
     若签署流程状态正常，且本企业存在签署方未签署，同一签署流程可以多次提交签署审批结果，签署时的最后一个“审批结果”有效。

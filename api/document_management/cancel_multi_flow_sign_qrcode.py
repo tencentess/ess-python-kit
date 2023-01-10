@@ -6,8 +6,11 @@ from config import Config
 
 def cancel_multi_flow_sign_qrcode(operator_user_id, qrcode_id):
     """
-    此接口（CancelMultiFlowSignQRCode）用于取消一码多扫二维码。
-    该接口对传入的二维码ID，若还在有效期内，可以提前失效。
+    CancelMultiFlowSignQRCode 取消一码多扫二维码
+
+    官网文档：https://cloud.tencent.com/document/product/1323/75451
+
+    此接口（CancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
     """
 
     # 构造客户端调用实例
