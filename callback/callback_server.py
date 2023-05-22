@@ -1,3 +1,5 @@
+# 回调解密 - 旧合同结构
+
 class FlowInfo(object):
     """
     回调数据对象 FlowInfo

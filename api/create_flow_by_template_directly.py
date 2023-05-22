@@ -19,11 +19,11 @@ def create_flow_by_template_directly(operator_user_id, flow_name, approvers):
     # 创建电子文档
     create_document(operator_user_id, flow_id, Config.template_id, flow_name, [])
 
-    # 开启流程
-    start_flow(operator_user_id, flow_id)
-
     # 等待文档异步合成
     time.sleep(3)
+
+    # 开启流程
+    start_flow(operator_user_id, flow_id)
 
     # 获取签署链接
     scheme_resp = create_schema_url(operator_user_id, flow_id, 1)
