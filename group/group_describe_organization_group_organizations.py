@@ -9,13 +9,6 @@ from config import Config
 
 
 def group_describe_flow_templates(operator_user_id, limit, offset):
-    """
-    查询集团企业列表
-
-    官网文档：https://cloud.tencent.com/document/product/1323/86114
-
-    此API接口用户查询加入集团的成员企业
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)

@@ -5,14 +5,6 @@ from config import Config
 
 
 def cancel_flow(operator_user_id, flow_id, cancel_message):
-    """
-    CancelFlow 撤销签署流程
-
-    官网文档：https://cloud.tencent.com/document/product/1323/70362
-
-    适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
-    注：如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同。
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(
@@ -28,9 +20,8 @@ def cancel_flow(operator_user_id, flow_id, cancel_message):
     user_info.UserId = operator_user_id
     req.Operator = user_info
 
-    # 签署流程id
     req.FlowId = flow_id
-    # 撤销原因，最长200个字符
+    
     req.CancelMessage = cancel_message
 
     response = client.CancelFlow(req)

@@ -5,11 +5,6 @@ from config import Config
 
 
 def describe_third_party_auth_code(operator_user_id, auth_code):
-    """
-    DescribeThirdPartyAuthCode 通过AuthCode查询用户是否实名
-
-    官网文档：https://cloud.tencent.com/document/product/1323/70368
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)
@@ -29,9 +24,6 @@ def describe_third_party_auth_code(operator_user_id, auth_code):
 
 
 if __name__ == '__main__':
-    """
-    通过AuthCode查询用户是否实名调用样例
-    """
 
     try:
         auth_code = '********************************'

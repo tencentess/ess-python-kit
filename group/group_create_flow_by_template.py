@@ -5,14 +5,6 @@ sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from api.common import get_client_instance
 
 def group_create_flow(operator_user_id, flow_name, approvers, proxy_organization_id):
-    """
-    CreateFlow 创建签署流程
-
-    官网文档：https://cloud.tencent.com/document/api/1323/70361
-
-    适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
-    注：该接口是通过模板生成合同流程的前置接口，先创建一个不包含签署文件的流程。配合“创建电子文档”接口和“发起流程”接口使用。
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)
@@ -33,7 +25,6 @@ def group_create_flow(operator_user_id, flow_name, approvers, proxy_organization
     # 签署流程参与者信息
     req.Approvers = approvers
 
-    # 签署流程名称,最大长度200个字符
     req.FlowName = flow_name
 
     response = client.CreateFlow(req)
@@ -41,13 +32,6 @@ def group_create_flow(operator_user_id, flow_name, approvers, proxy_organization
 
 
 def group_create_document(operator_user_id, flow_id, template_id, file_name, form_fields, proxy_organization_id):
-    """
-    CreateDocument 创建电子文档
-
-    官方文档：https://cloud.tencent.com/document/api/1323/70364
-
-    适用场景：见创建签署流程接口。注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。是“发起流程”接口的前置接口。
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)
@@ -65,10 +49,8 @@ def group_create_document(operator_user_id, flow_id, template_id, file_name, for
     agent.ProxyOrganizationId = proxy_organization_id
     req.Agent = agent
 
-    # 文件名列表,单个文件名最大长度200个字符
     req.FileNames = [file_name]
 
-    # 签署流程编号,由CreateFlow接口返回
     req.FlowId = flow_id
 
     # 用户上传的模板ID,在控制台模版管理中可以找到
@@ -83,14 +65,6 @@ def group_create_document(operator_user_id, flow_id, template_id, file_name, for
 
 
 def group_start_flow(operator_user_id, flow_id, proxy_organization_id):
-    """
-    StartFlow 此接口用于发起流程
-
-    官网文档：https://cloud.tencent.com/document/product/1323/70357
-
-    适用场景：见创建签署流程接口。
-    注：该接口是“创建电子文档”接口的后置接口，用于激活包含完整合同信息（模板及内容信息）的流程。激活后的流程就是一份待签署的电子合同。
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)
@@ -108,7 +82,6 @@ def group_start_flow(operator_user_id, flow_id, proxy_organization_id):
     agent.ProxyOrganizationId = proxy_organization_id
     req.Agent = agent
 
-    # 签署流程编号，由CreateFlow接口返回
     req.FlowId = flow_id
 
     response = client.StartFlow(req)
@@ -116,10 +89,6 @@ def group_start_flow(operator_user_id, flow_id, proxy_organization_id):
 
 
 if __name__ == '__main__':
-    """
-      主企业代子企业使用模板发起合同的简单样例，如需更详细的参数使用说明，请参考 flow_management 目录下的 create_flow/create_document/start_flow
-      注意：使用集团代发起功能，需要主企业和子企业均已加入集团，并且主企业OperatorUserId对应人员被赋予了对应操作权限
-    """
 
     import time
     from tencentcloud.ess.v20201111.models import FlowCreateApprover
@@ -129,7 +98,6 @@ if __name__ == '__main__':
         # 需要代发起的子企业的企业id
         proxy_organization_id = "********************************"
 
-        # 定义合同名
         flow_name = "********************************"
 
         # 构造签署人
@@ -138,15 +106,10 @@ if __name__ == '__main__':
         # 签署参与者信息
         # 个人签署方
         approver = FlowCreateApprover()
-        # 参与者类型：
-        # 0：企业
-        # 1：个人
-        # 3：企业静默签署
-        # 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。
         approver.ApproverType = 1
-        # 本环节需要操作人的名字
+
         approver.ApproverName = "****************"
-        # 本环节需要操作人的手机号
+
         approver.ApproverMobile = "****************"
         approvers.append(approver)
 

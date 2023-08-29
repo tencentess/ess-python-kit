@@ -32,17 +32,13 @@ def build_person_flow_create_approver(name, mobile):
     # 签署参与者信息
     # 个人签署方
     approver = FlowCreateApprover()
-    # 参与者类型：
-    # 0：企业
-    # 1：个人
-    # 3：企业静默签署
-    # 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。
+
     approver.ApproverType = 1
-    # 本环节需要操作人的名字
+
     approver.ApproverName = name
-    # 本环节需要操作人的手机号
+
     approver.ApproverMobile = mobile
-    # sms--短信，none--不通知
+
     approver.NotifyType = "sms"
 
     return approver
@@ -54,20 +50,15 @@ def build_organization_flow_create_approver(name, mobile, organization_name):
     """
     # 签署参与者信息
     approver = FlowCreateApprover()
-    # 参与者类型：
-    # 0：企业
-    # 1：个人
-    # 3：企业静默签署
-    # 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。
-    # 企业签署方
+
     approver.ApproverType = 0
-    # 本环节需要操作人的名字
+
     approver.ApproverName = name
-    # 本环节需要操作人的手机号
+
     approver.ApproverMobile = mobile
-    # 本环节需要企业操作人的企业名称
+
     approver.OrganizationName = organization_name
-    # sms--短信，none--不通知
+
     approver.NotifyType = "none"
 
     return approver
@@ -79,12 +70,7 @@ def build_server_sign_flow_create_approver():
     """
     # 签署参与者信息
     approver = FlowCreateApprover()
-    # 参与者类型：
-    # 0：企业
-    # 1：个人
-    # 3：企业静默签署
-    # 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。
-    # 企业静默签署方
+
     approver.ApproverType = 3
 
     return approver

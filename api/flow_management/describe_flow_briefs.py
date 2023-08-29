@@ -5,16 +5,6 @@ from config import Config
 
 
 def describe_flow_briefs(operator_user_id, flow_ids):
-    """
-    DescribeFlowBriefs 查询流程摘要
-
-    官网文档：https://cloud.tencent.com/document/product/1323/70358
-
-    适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
-    日调用量默认10W
-
-    tips: 如果需要查询合同的详细情况，需要使用查询合同详情接口 https://cloud.tencent.com/document/product/1323/80032
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)
@@ -27,7 +17,6 @@ def describe_flow_briefs(operator_user_id, flow_ids):
     user_info.UserId = operator_user_id
     req.Operator = user_info
 
-    # 需要查询的流程ID列表
     req.FlowIds = flow_ids
 
     response = client.DescribeFlowBriefs(req)
@@ -40,7 +29,6 @@ if __name__ == '__main__':
     """
 
     try:
-        # 需要查询的流程ID列表
         _flow_ids = ['********************************']
 
         resp = describe_flow_briefs(Config.operator_user_id, _flow_ids)

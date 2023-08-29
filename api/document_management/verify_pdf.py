@@ -5,13 +5,6 @@ from config import Config
 
 
 def verify_pdf(operator_user_id, flow_id):
-    """
-    VerifyPdf 合同文件验签
-
-    官网文档：https://cloud.tencent.com/document/product/1323/80797
-
-    验证合同文件
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)
@@ -24,7 +17,6 @@ def verify_pdf(operator_user_id, flow_id):
     user_info.UserId = operator_user_id
     req.Operator = user_info
 
-    # 签署流程id
     req.FlowId = flow_id
 
     response = client.VerifyPdf(req)
@@ -32,9 +24,6 @@ def verify_pdf(operator_user_id, flow_id):
 
 
 if __name__ == '__main__':
-    """
-    合同文件验签调用样例
-    """
 
     try:
         _flow_id = '********************************'

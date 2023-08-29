@@ -5,13 +5,6 @@ from config import Config
 
 
 def describe_integration_employees(operator_user_id, limit, offset, filters):
-    """
-    DescribeIntegrationEmployees 查询员工信息，每次返回的数据量最大为20
-
-    官网文档：https://cloud.tencent.com/document/product/1323/81115
-
-    查询员工信息，每次返回的数据量最大为20
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)

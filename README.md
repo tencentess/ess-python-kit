@@ -52,4 +52,4 @@ tools目录提供了调用电子签企业版API时涉及到的各种算法样例
 里面定义调用电子签企业版API需要的一些核心参数。
 
 ## 电子签企业版官网入口
-[腾讯电子签企业版](https://cloud.tencent.com/document/product/1323)
+[腾讯电子签开发者中心](https://qian.tencent.com/developers/company/overview)

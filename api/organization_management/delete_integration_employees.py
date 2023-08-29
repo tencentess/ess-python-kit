@@ -5,13 +5,6 @@ from config import Config
 
 
 def delete_integration_employees(operator_user_id, employees):
-    """
-    DeleteIntegrationEmployees 移除员工
-
-    官网文档：https://cloud.tencent.com/document/product/1323/81116
-
-    移除员工
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(Config.secret_id, Config.secret_key, Config.endpoint)
@@ -24,7 +17,6 @@ def delete_integration_employees(operator_user_id, employees):
     user_info.UserId = operator_user_id
     req.Operator = user_info
 
-    # 待移除员工的信息，userId和openId二选一，必填一个
     req.Employees = employees
 
     response = client.DeleteIntegrationEmployees(req)
@@ -37,7 +29,6 @@ if __name__ == '__main__':
     """
 
     try:
-        # 待移除员工的信息，userId和openId二选一，必填一个
         _employees = []
 
         _employee = Staff()

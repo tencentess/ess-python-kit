@@ -5,13 +5,6 @@ from config import Config
 
 
 def create_flow_evidence_report(operator_user_id, flow_id):
-    """
-    CreateFlowEvidenceReport 创建并返回出证报告
-
-    官网文档：https://cloud.tencent.com/document/product/1323/79686
-
-    创建出证报告，返回报告 ID。
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(
@@ -27,7 +20,6 @@ def create_flow_evidence_report(operator_user_id, flow_id):
     user_info.UserId = operator_user_id
     req.Operator = user_info
 
-    # 签署流程id
     req.FlowId = flow_id
 
     response = client.CreateFlowEvidenceReport(req)

@@ -5,16 +5,6 @@ from config import Config
 
 
 def create_flow_approvers(operator_user_id, flow_id, approvers):
-    """
-    CreateFlowApprovers 补充签署流程本企业签署人信息
-
-    官网文档：https://cloud.tencent.com/document/product/1323/80033
-
-    适用场景：在通过模版或者文件发起合同时，若未指定本企业签署人信息，则流程发起后，可以调用此接口补充签署人。
-    同一签署人可以补充多个员工作为候选签署人,最终签署人取决于谁先领取合同完成签署。
-
-    注：目前暂时只支持补充来源于企业微信的员工作为候选签署人
-    """
 
     # 构造客户端调用实例
     client = get_client_instance(
@@ -30,10 +20,8 @@ def create_flow_approvers(operator_user_id, flow_id, approvers):
     user_info.UserId = operator_user_id
     req.Operator = user_info
 
-    # 签署流程编号
     req.FlowId = flow_id
 
-    # 补充签署人信息
     req.Approvers = approvers
 
     response = client.CreateFlowApprovers(req)
